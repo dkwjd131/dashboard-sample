@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <div css={header.container}>
-      <div css={header.wrapper}>
+      <div>
         <Button id="admin-button" onClick={handleClick}>
           ADMIN
         </Button>

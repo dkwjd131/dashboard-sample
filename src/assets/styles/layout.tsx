@@ -8,11 +8,10 @@ export const header = {
     alignItems: 'center',
     padding: '0px 20px 0px 20px',
   }),
-  wrapper: css({}),
 };
 
 export const main = {
   container: css({
-    background: '#b8b8bd',
+    height: 'calc(100% - 50px)',
   }),
 };
