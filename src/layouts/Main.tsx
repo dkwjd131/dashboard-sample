@@ -2,7 +2,7 @@ import * as React from 'react';
 import { main } from '../assets/styles/layout';
 import { BrowserRouter, Navigate, Route, RouteProps, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
-import Dashboard from '../pages/Dashboard';
+import Monitoring from '../pages/Dashboard/Monitoring';
 import Admin from '../pages/Admin';
 
 const Main = () => {
@@ -10,7 +10,7 @@ const Main = () => {
     <div css={main.container}>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/monitoring" element={<Monitoring />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>

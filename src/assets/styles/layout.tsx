@@ -12,6 +12,7 @@ export const header = {
 
 export const main = {
   container: css({
-    height: 'calc(100% - 50px)',
+    height: 'calc(100% - 110px)',
+    padding: '30px',
   }),
 };

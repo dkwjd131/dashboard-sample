@@ -54,7 +54,7 @@ const Header = () => {
           }}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/dashboard"> dashboard </Link>
+            <Link to="/monitoring"> monitoring </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>detecting</MenuItem>
         </Menu>
