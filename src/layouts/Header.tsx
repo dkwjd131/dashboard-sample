@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import IconButton from '@mui/material/IconButton';
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -17,6 +19,11 @@ const Header = () => {
   return (
     <div css={header.container}>
       <div>
+        <IconButton aria-label="home">
+          <Link to="/home">
+            <HomeIcon />
+          </Link>
+        </IconButton>
         <Button id="admin-button" onClick={handleClick}>
           ADMIN
         </Button>
