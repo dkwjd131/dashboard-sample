@@ -3,6 +3,7 @@ import { header } from '../assets/styles/layout';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -31,7 +32,9 @@ const Header = () => {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleClose}>project</MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link to="/admin"> admin </Link>
+          </MenuItem>
           <MenuItem onClick={handleClose}>asset</MenuItem>
         </Menu>
         <Menu
@@ -43,7 +46,9 @@ const Header = () => {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleClose}>monitoring</MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link to="/dashboard"> dashboard </Link>
+          </MenuItem>
           <MenuItem onClick={handleClose}>detecting</MenuItem>
         </Menu>
       </div>

@@ -3,13 +3,16 @@ import Header from './layouts/Header';
 import Main from './layouts/Main';
 import reset from './assets/styles/reset';
 import { Global } from '@emotion/react';
+import { BrowserRouter, Navigate, Route, RouteProps, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Global styles={reset} />
-      <Header />
-      <Main />
+      <BrowserRouter>
+        <Global styles={reset} />
+        <Header />
+        <Main />
+      </BrowserRouter>
     </div>
   );
 }
