@@ -1,4 +1,4 @@
-import { monitor } from './monitoringStyle';
+import { monitor } from './monitoring.styled';
 import { Box, Grid } from '@mui/material';
 
 const Monitoring = () => {

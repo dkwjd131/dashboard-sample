@@ -157,4 +157,4 @@ const reset = css`
   }
 `;
 
-export default reset;
+export { reset };

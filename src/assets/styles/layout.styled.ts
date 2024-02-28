@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const header = {
+const header = {
   container: css({
     boxShadow: '0px 1px 5px 0px #b8b8bd',
     height: '50px',
@@ -10,9 +10,11 @@ export const header = {
   }),
 };
 
-export const main = {
+const main = {
   container: css({
     height: 'calc(100% - 110px)',
     padding: '30px',
   }),
 };
+
+export { header, main };
