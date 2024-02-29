@@ -35,9 +35,6 @@ const Header = () => {
           anchorEl={document.getElementById('admin-button')}
           open={anchorEl ? anchorEl.id === 'admin-button' : false}
           onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
         >
           <MenuItem onClick={handleClose}>
             <Link to="/admin"> admin </Link>
@@ -49,9 +46,6 @@ const Header = () => {
           anchorEl={document.getElementById('dashboard-button')}
           open={anchorEl ? anchorEl.id === 'dashboard-button' : false}
           onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
         >
           <MenuItem onClick={handleClose}>
             <Link to="/monitoring"> monitoring </Link>

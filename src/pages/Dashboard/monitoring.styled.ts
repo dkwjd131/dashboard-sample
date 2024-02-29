@@ -11,24 +11,39 @@ const monitor = {
     align-items: center;
     gap: 20px;
   `,
-  chartGrid: css`
-    padding: 10px;
-    height: 500px;
+  // chartGrid: css`
+  //   padding: 10px;
+  //   height: 500px;
 
-    & .MuiGrid-container {
-      height: 100%;
+  //   & .MuiGrid-container {
+  //     height: 100%;
 
-      .MuiGrid-item {
-        padding: 10px;
-        height: 100%;
+  //     .MuiGrid-item {
+  //       padding: 10px;
+  //       height: 100%;
 
-        .MuiPaper-root {
-          height: 100%;
-          padding: 10px;
-        }
-      }
-    }
-  `,
+  //       .MuiPaper-root {
+  //         height: 100%;
+  //         padding: 10px;
+  //       }
+  //     }
+  //   }
+  // `,
+  chartGrid: css({
+    padding: 10,
+    height: 500,
+    '& .MuiGrid-container': {
+      height: '100%',
+      '.MuiGrid-item': {
+        padding: 10,
+        height: '100%',
+        '.MuiPaper-root': {
+          height: '100%',
+          padding: 10,
+        },
+      },
+    },
+  }),
   modal: css`
     position: absolute;
     top: 50%;
