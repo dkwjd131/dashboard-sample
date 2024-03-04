@@ -8,11 +8,4 @@ const header = {
   },
 };
 
-const main = {
-  container: {
-    height: 'calc(100% - 110px)',
-    padding: 30,
-  },
-};
-
-export { header, main };
+export { header };
