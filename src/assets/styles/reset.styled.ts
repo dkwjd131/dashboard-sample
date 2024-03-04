@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -21,6 +20,19 @@ const reset = {
   },
   body: {
     lineHeight: 1,
+    margin: 0,
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto',
+      'Oxygen',
+      'Ubuntu',
+      'Cantarell',
+      'Fira Sans',
+    ],
+    '-webkit-font-smoothing': 'antialiased',
+    '-moz-osx-font-smoothing': 'grayscale',
   },
   'ol,ul': {
     listStyle: 'none',
@@ -31,37 +43,14 @@ const reset = {
   'blockquote:before, blockquote:after, q:before, q:after': {
     content: '' || 'none',
   },
+  table: { 'border-collapse': 'collapse', borderSpacing: 0 },
+  code: {
+    fontFamily: ['source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'],
+  },
+  a: {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 };
-
-const reset2 = css`
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-      'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-`;
 
 export { reset };
