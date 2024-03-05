@@ -20,16 +20,33 @@ const Header = () => {
     <div css={header.container}>
       <div>
         <IconButton aria-label="home">
-          <Link to="/home">
+          <Link to="/">
             <HomeIcon />
           </Link>
         </IconButton>
+        <Button id="system-button" onClick={handleClick}>
+          SYSTEM
+        </Button>
         <Button id="admin-button" onClick={handleClick}>
           ADMIN
         </Button>
-        <Button id="dashboard-button" onClick={handleClick}>
-          DASHBOARD
+        <Button id="monitoring-button" onClick={handleClick}>
+          MONITORING
         </Button>
+        <Button id="detecting-button" onClick={handleClick}>
+          DETECTING
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={document.getElementById('system-button')}
+          open={anchorEl ? anchorEl.id === 'system-button' : false}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>
+            <Link to="/system/system_1"> system-1 </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>system-2</MenuItem>
+        </Menu>
         <Menu
           id="basic-menu"
           anchorEl={document.getElementById('admin-button')}
@@ -37,20 +54,31 @@ const Header = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/admin"> admin </Link>
+            <Link to="/admin/admin_1"> admin-1 </Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>asset</MenuItem>
+          <MenuItem onClick={handleClose}>admin-2</MenuItem>
         </Menu>
         <Menu
           id="basic-menu"
-          anchorEl={document.getElementById('dashboard-button')}
-          open={anchorEl ? anchorEl.id === 'dashboard-button' : false}
+          anchorEl={document.getElementById('monitoring-button')}
+          open={anchorEl ? anchorEl.id === 'monitoring-button' : false}
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/monitoring"> monitoring </Link>
+            <Link to="/user/monitoring"> monitoring-1 </Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>detecting</MenuItem>
+          <MenuItem onClick={handleClose}>monitoring-2</MenuItem>
+        </Menu>
+        <Menu
+          id="basic-menu"
+          anchorEl={document.getElementById('detecting-button')}
+          open={anchorEl ? anchorEl.id === 'detecting-button' : false}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>
+            <Link to="/user/detecting"> detecting-1 </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>detecting-2</MenuItem>
         </Menu>
       </div>
     </div>

@@ -31,8 +31,8 @@ const reset = {
       'Cantarell',
       'Fira Sans',
     ],
-    '-webkit-font-smoothing': 'antialiased',
-    '-moz-osx-font-smoothing': 'grayscale',
+    WebkitFontSmoothing: 'antialiased' as const,
+    MozOsxFontSmoothing: 'grayscale' as const,
   },
   'ol,ul': {
     listStyle: 'none',
@@ -43,7 +43,7 @@ const reset = {
   'blockquote:before, blockquote:after, q:before, q:after': {
     content: '' || 'none',
   },
-  table: { 'border-collapse': 'collapse', borderSpacing: 0 },
+  table: { borderCollapse: 'collapse' as const, borderSpacing: 0 },
   code: {
     fontFamily: ['source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'],
   },
