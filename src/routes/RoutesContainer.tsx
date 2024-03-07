@@ -1,43 +1,29 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import System from '../pages/System';
 import Admin from '../pages/Admin';
-import SystemRoute from './private/systemRoute';
-import AdminRoute from './private/adminRoute';
-import UserRoute from './private/userRoute';
 import Monitoring from '../pages/monitor/Monitoring';
 import Detecting from '../pages/detect/Detecting';
+import PrivateRouter from './PrivateRouter';
+import AuthError from '../pages/error/AuthError';
 
 const RoutesContainer = () => {
-  const userInfo = 'SYSTEM';
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Home />,
-      children: [
-        {
-          path: 'system',
-          element: <SystemRoute userInfo={userInfo} />,
-          children: [{ path: 'system_1', element: <System /> }],
-        },
-        {
-          path: 'admin',
-          element: <AdminRoute userInfo={userInfo} />,
-          children: [{ path: 'admin_1', element: <Admin /> }],
-        },
-        {
-          path: 'user',
-          element: <UserRoute userInfo={userInfo} />,
-          children: [
-            { path: 'monitoring', element: <Monitoring /> },
-            { path: 'detecting', element: <Detecting /> },
-          ],
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/system" element={<PrivateRouter access={['SYSTEM']} />}>
+        <Route path="system_1" element={<System />} />
+      </Route>
+      <Route path="/admin" element={<PrivateRouter access={['SYSTEM', 'ADMIN']} />}>
+        <Route path="admin_1" element={<Admin />} />
+      </Route>
+      <Route path="/user" element={<PrivateRouter access={['USER']} />}>
+        <Route path="monitoring" element={<Monitoring />} />
+        <Route path="detecting" element={<Detecting />} />
+      </Route>
+      <Route path="/authError" element={<AuthError />} />
+    </Routes>
+  );
 };
 
 export default RoutesContainer;

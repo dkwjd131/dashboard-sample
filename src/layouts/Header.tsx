@@ -43,7 +43,7 @@ const Header = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/system/system_1"> system-1 </Link>
+            <Link to="system/system_1"> system-1 </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>system-2</MenuItem>
         </Menu>
@@ -54,7 +54,7 @@ const Header = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/admin/admin_1"> admin-1 </Link>
+            <Link to="admin/admin_1"> admin-1 </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>admin-2</MenuItem>
         </Menu>
@@ -65,7 +65,7 @@ const Header = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/user/monitoring"> monitoring-1 </Link>
+            <Link to="user/monitoring"> monitoring-1 </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>monitoring-2</MenuItem>
         </Menu>
@@ -76,7 +76,7 @@ const Header = () => {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>
-            <Link to="/user/detecting"> detecting-1 </Link>
+            <Link to="user/detecting"> detecting-1 </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>detecting-2</MenuItem>
         </Menu>
