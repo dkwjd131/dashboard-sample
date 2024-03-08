@@ -19,11 +19,11 @@ const Header = () => {
   return (
     <div css={header.container}>
       <div>
-        <IconButton aria-label="home">
+        <Button aria-label="home">
           <Link to="/">
             <HomeIcon />
           </Link>
-        </IconButton>
+        </Button>
         <Button id="system-button" onClick={handleClick}>
           SYSTEM
         </Button>
