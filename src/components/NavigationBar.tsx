@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
+import { navigationBar } from '../assets/styles/navigationBar.styled';
+  
 export type MenuItemProps = {
   label: React.ReactNode;
   key: React.Key;
@@ -17,11 +18,20 @@ export type MenuItemProps = {
 
 const NavigationBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [subAnchorEl, setSubAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const subHandleClick = (event: React.MouseEvent<HTMLElement>) => {
+    console.log('sub handle click')
+    setSubAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const subHandleClose = () => {
+    setAnchorEl(null);
+    setSubAnchorEl(null);
   };
 
   let systemSubMenuList: MenuItemProps[] = [
@@ -44,6 +54,7 @@ const NavigationBar = () => {
       key: 'system_1',
       id: 'system_1',
       type: 'menu',
+      path: 'system/system_1'
     },
     {
       label: 'system_2',
@@ -73,6 +84,7 @@ const NavigationBar = () => {
       key: 'admin_1',
       id: 'admin_1',
       type: 'menu',
+      path:"admin/admin_1"
     },
     {
       label: 'admin_2',
@@ -88,6 +100,7 @@ const NavigationBar = () => {
       key: 'monitoring_1',
       id: 'monitoring_1',
       type: 'menu',
+      path: "user/monitoring"
     },
     {
       label: 'monitoring_2',
@@ -102,6 +115,7 @@ const NavigationBar = () => {
       key: 'detecting_1',
       id: 'detecting_1',
       type: 'menu',
+      path: "user/detecting"
     },
     {
       label: 'detecting_2',
@@ -117,6 +131,7 @@ const NavigationBar = () => {
       key: 'home',
       id: 'home',
       type: 'menu',
+      path: '/'
     },
     {
       label: 'SYSTEM',
@@ -150,27 +165,57 @@ const NavigationBar = () => {
 
   return (
     <>
-      {menuList.map((menu: MenuItemProps) => {
-        return menu.type === 'menu' ? (
-          <Button key={menu.key}>
-            <Link to={menu.path ?? '/'}>{menu.label}</Link>
+      {menuList.map((oneDepth: MenuItemProps) => {
+        return oneDepth.type === 'menu' ? (
+          <Button key={oneDepth.key}>
+            <Link to={oneDepth.path ?? '/'}>{oneDepth.label}</Link>
           </Button>
         ) : (
-          <>
-            <Button id={menu.id}>{menu.label}</Button>
-            {menu.children?.map((item: MenuItemProps) => {
+          <div key={oneDepth.key}>
+              <Button key={'group'+oneDepth.key} id={oneDepth.id} onClick={handleClick}>{oneDepth.label}</Button>
               <Menu
-                anchorEl={document.getElementById('system-button')}
-                open={anchorEl ? anchorEl.id === 'system-button' : false}
+                key={'Menu-'+oneDepth.key} 
+                anchorEl={document.getElementById(oneDepth.id)}
+                open={anchorEl ? anchorEl.id === oneDepth.id : false}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
-                  <Link to="system/system_1"> system-1 </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>system-2</MenuItem>
-              </Menu>;
-            })}
-          </>
+                <div id={'anchor'+oneDepth.id}></div>
+                {oneDepth.children?.map((twoDepth: MenuItemProps) => {
+                  if (twoDepth.type === 'menu') {
+                    return <MenuItem key={twoDepth.key} onClick={handleClose}>
+                      <Link to={twoDepth.path ?? '/'}> {twoDepth.label} </Link>
+                    </MenuItem>;
+                  } else {
+                    return <div key={twoDepth.key}>
+                      <MenuItem id={twoDepth.id} key={'group'+twoDepth.key} onClick={subHandleClick}>{twoDepth.label}</MenuItem>
+                      <Menu
+                        css={navigationBar['three-depth-menu']}
+                        key={'Menu-'+twoDepth.key}
+                        anchorEl={document.getElementById('anchor'+oneDepth.id)}
+                        open={subAnchorEl ? subAnchorEl.id === twoDepth.id : false}
+                        onClose={subHandleClose}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left',
+                        }}
+                      >
+                        {
+                          twoDepth.children?.map((threeDepth: MenuItemProps) => { 
+                            return <MenuItem key={threeDepth.key} onClick={subHandleClose}>
+                            <Link to={threeDepth.path ?? '/'}> {threeDepth.label} </Link>
+                          </MenuItem>;
+                          })
+                        }
+                      </Menu>
+                    </div>;
+                  }
+              })}
+              </Menu>
+          </div>
         );
       })}
     </>

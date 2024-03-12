@@ -6,19 +6,28 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import IconButton from '@mui/material/IconButton';
+import NavigationBar from '../components/NavigationBar';
 
 const Header = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  // const [subAnchorEl, setSubAnchorEl] = React.useState<null | HTMLElement>(null);
+  // const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const subHandleClick = (event: React.MouseEvent<HTMLElement>) => {
+  //   setSubAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+  // const subHandleClose = () => {
+  //   setAnchorEl(null);
+  //   setSubAnchorEl(null);
+  // };
 
   return (
     <div css={header.container}>
-      <div>
+      {/* <div>
         <Button aria-label="home">
           <Link to="/">
             <HomeIcon />
@@ -42,11 +51,30 @@ const Header = () => {
           open={anchorEl ? anchorEl.id === 'system-button' : false}
           onClose={handleClose}
         >
+          <div id="system-menu" ></div>
           <MenuItem onClick={handleClose}>
             <Link to="system/system_1"> system-1 </Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>system-2</MenuItem>
+          <MenuItem id="system_2" onClick={subHandleClick}>system-2</MenuItem>
+            <Menu
+          id="sub-menu"
+          anchorEl={document.getElementById('system-menu')}
+          open={subAnchorEl ? subAnchorEl.id === 'system_2' : false}
+            onClose={subHandleClose}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+            <MenuItem id="system_7" onClick={subHandleClose}>system-7</MenuItem>
+            <MenuItem id="system_8" onClick={subHandleClose}>system-8</MenuItem>
+          </Menu>
         </Menu>
+        
         <Menu
           id="basic-menu"
           anchorEl={document.getElementById('admin-button')}
@@ -80,7 +108,8 @@ const Header = () => {
           </MenuItem>
           <MenuItem onClick={handleClose}>detecting-2</MenuItem>
         </Menu>
-      </div>
+      </div> */}
+      <NavigationBar />
     </div>
   );
 };
